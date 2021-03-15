@@ -31,8 +31,8 @@ public class AdminController {
         model.addAttribute("user", userService.get(id));
         return "user/editUserAdmin";
     }
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String saveEditUser (@Valid @ModelAttribute("user") User user, @PathVariable Long id,
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String saveEditUser (@Valid @ModelAttribute("user") User user,
                                 BindingResult result){
         if(result.hasErrors()){
             return "user/editUserAdmin";

@@ -39,7 +39,7 @@
                     <li><a href="#">Moje zbiórki</a></li>
                     <li>
                         <form action="<c:url value="/logout"/>" method="post">
-                            <input type="submit" class="btn" value="Wyloguj">
+                            <input type="submit" class="btn-link" value="Wyloguj">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </form>
 

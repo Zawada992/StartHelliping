@@ -21,7 +21,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form:form method="post" modelAttribute="user" action="/app/user/edit">
+                        <form:form method="post" modelAttribute="users" action="/app/user/update">
 
                             <form:hidden path="id"/>
                             <form:hidden path="password"/>

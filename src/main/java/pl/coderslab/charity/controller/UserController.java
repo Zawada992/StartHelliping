@@ -1,7 +1,9 @@
 package pl.coderslab.charity.controller;
 
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,21 +47,23 @@ public class UserController {
 //        return "redirect:/login";
 //    }
 //
+
     @RequestMapping(value = "/edit")
     public String editUser (Model model, Authentication auth){
         User currentUser = userService.findByUserEmail(auth.getName());
         Long id = currentUser.getId();
-        model.addAttribute("user", userService.get(id));
+        model.addAttribute("users", userService.get(id));
         return "user/editUser";
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String saveEditUser (@Valid @ModelAttribute("user") User user, BindingResult result){
+//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @PostMapping("/update")
+    public String saveEditUser (@Valid @ModelAttribute("users") User users, BindingResult result){
         if(result.hasErrors()){
             return "user/editUser";
         }
-        userService.add(user);
-        return "redirect:/home";
+        userService.add(users);
+        return "redirect:/app/home";
     }
 
         @RequestMapping("/delete")
