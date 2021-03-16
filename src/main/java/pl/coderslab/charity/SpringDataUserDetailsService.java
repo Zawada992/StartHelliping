@@ -12,6 +12,7 @@ import pl.coderslab.charity.service.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SpringDataUserDetailsService implements UserDetailsService {
 
@@ -28,9 +29,12 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException(email);
         }
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        user.getRoles().forEach(r ->
-                grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
+
+        Set<GrantedAuthority> grantedAuthorities = user.getRoles()
+                .stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRoleType().toString()))
+                .collect(Collectors.toSet());
+
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(), user.getPassword(), grantedAuthorities);
     }

@@ -1,6 +1,8 @@
 package pl.coderslab.charity.service;
 
 
+import pl.coderslab.charity.model.Role;
+import pl.coderslab.charity.model.RoleType;
 import pl.coderslab.charity.model.User;
 
 import java.util.List;
@@ -13,6 +15,9 @@ public interface UserService {
     void delete(Long id);
     User get(Long id);
     List<User> getUsers();
+
+    List<User> findAllByRoleType(RoleType roleType);
+
 //    void sendVerificationEmail(User user,String siteURL);
 //    void verifyAcc(String verifyCode);
 

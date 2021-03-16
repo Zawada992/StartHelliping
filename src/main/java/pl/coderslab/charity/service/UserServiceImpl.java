@@ -5,6 +5,7 @@ package pl.coderslab.charity.service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.model.Role;
+import pl.coderslab.charity.model.RoleType;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
@@ -14,6 +15,7 @@ import pl.coderslab.charity.repository.UserRepository;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,12 +23,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final  RoleService roleService;
 
 
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, RoleService roleService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.roleService = roleService;
     }
 
 
@@ -43,8 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setRoles(Set.of(roleService.findByRoleType(RoleType.ROLE_USER)));
         userRepository.save(user);
     }
 
@@ -68,6 +71,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+
+
+    @Override
+    public List<User> findAllByRoleType(RoleType roleType) {
+        Role role = roleService.findByRoleType(roleType);
+        return userRepository.findAllByRoleType(role);
+    }
 
 
 }

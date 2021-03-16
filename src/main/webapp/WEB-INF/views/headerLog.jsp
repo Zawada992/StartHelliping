@@ -57,8 +57,8 @@
             </sec:authorize>
             <li><a href="/app/form" class="btn btn--without-border">Przekaż dary</a></li>
             <sec:authorize access="hasRole('ADMIN')">
-            <li><a href="/admin/user/all" class="btn btn--without-border">Urzytkownicy</a></li>
-<%--            <li><a href="/#contact" class="btn btn--without-border">Administratorzy</a></li>--%>
+            <li><a href="/admin/user/all" class="btn btn--without-border">Użytkownicy</a></li>
+            <li><a href="/admin/user/admins" class="btn btn--without-border">Administratorzy</a></li>
             </sec:authorize>
             <li><a href="/#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>

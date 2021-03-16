@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.model.RoleType;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.UserService;
 
@@ -18,6 +19,13 @@ public class AdminController {
     public AdminController(UserService userService) {
         this.userService = userService;
     }
+
+    @GetMapping("/admins")
+    public String showAllAdmin(Model model) {
+        model.addAttribute("admins", userService.findAllByRoleType(RoleType.ROLE_ADMIN));
+        return "admins/adminsAll";
+    }
+
 
     @GetMapping("/all")
     public String showAllUsers(Model model) {

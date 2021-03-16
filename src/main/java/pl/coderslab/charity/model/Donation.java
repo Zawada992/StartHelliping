@@ -26,12 +26,12 @@ public class Donation {
     private LocalTime pickUpTime;
     private String pickUpComment;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Category> categories;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.REMOVE)
     private Institution institution;
 }

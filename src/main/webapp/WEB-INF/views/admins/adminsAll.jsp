@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: robert
-  Date: 10.03.2021
-  Time: 14:04
+  Date: 15.03.2021
+  Time: 16:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -40,9 +40,6 @@
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                                     aria-label="Office: activate to sort column ascending">
                                     <spring:message code="app.email"/></th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                                    aria-label="Office: activate to sort column ascending">
-                                    <spring:message code="app.role"/></th>
                                 <sec:authorize access="hasAnyRole('ADMIN')">
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                                     aria-label="Salary: activate to sort column ascending">
@@ -56,7 +53,6 @@
                                 <th rowspan="1" colspan="1"><spring:message code="app.login.firstName"/></th>
                                 <th rowspan="1" colspan="1"><spring:message code="app.login.lastName"/></th>
                                 <th rowspan="1" colspan="1"><spring:message code="app.email"/></th>
-                                <th rowspan="1" colspan="1"><spring:message code="app.role"/></th>
                                 <sec:authorize access="hasRole('ADMIN')">
                                     <th rowspan="1" colspan="1"><spring:message code="app.action"/></th>
                                 </sec:authorize>
@@ -65,13 +61,12 @@
                             </tfoot>
                             <tbody>
 
-                            <c:forEach items="${user}" var="user">
+                            <c:forEach items="${admins}" var="user">
                                 <tr role="row" class="odd">
                                     <td><c:out value="${user.id}"/></td>
                                     <td><c:out value="${user.firstName}"/></td>
                                     <td><c:out value="${user.lastName}"/></td>
                                     <td><c:out value="${user.email}"/></td>
-                                    <td><c:out value="${user.roles}"/></td>
 
                                     <sec:authorize access="hasRole('ADMIN')">
 

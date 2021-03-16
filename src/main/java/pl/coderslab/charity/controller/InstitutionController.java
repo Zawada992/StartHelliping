@@ -62,7 +62,8 @@ public class InstitutionController {
 
     @RequestMapping("/admin/institution/delete/{id}")
     public String deleteInst(@PathVariable long id){
-        institutionService.delete(id);
+        Institution institution = institutionService.get(id);
+        institutionService.delete(institution);
         return "redirect:/admin/institution";
     }
 }
