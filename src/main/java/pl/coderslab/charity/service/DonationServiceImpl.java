@@ -5,7 +5,9 @@ import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.DonationRepository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DonationServiceImpl implements DonationService{
@@ -39,7 +41,7 @@ public class DonationServiceImpl implements DonationService{
 
     @Override
     public Long getSumBags() {
-        return donationRepository.getSumBags();
+        return donationRepository.getSumBags().orElse(0L);
     }
 
     @Override

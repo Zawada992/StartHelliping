@@ -13,46 +13,41 @@
     <title>Title</title>
 </head>
 <body>
-<%@include file="../headerLog.jsp" %>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-xl-8">
-            <center>
+<%@include file="../headerAdmin.jsp" %>
 
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <form:form method="post" modelAttribute="user" action="/admin/user/edit">
 
-                            <form:hidden path="id"/>
+<div class="contact" id="contact">
+    <h2>Edytuj ${user.firstName} ${user.lastName}</h2>
 
-                            <div class="form-group">
-                                <td><spring:message code="app.login.firstName"/></td>
-                                <form:input path="firstName" class="form-control"/>
-                                <form:errors path="firstName"/>
-                            </div>
-                            <div class="form-group">
-                                <td><spring:message code="app.login.lastName"/></td>
-                                <form:input path="lastName" class="form-control"/>
-                                <form:errors path="lastName"/>
-                            </div>
-                            <div class="form-group">
-                                <td><spring:message code="app.email"/></td>
-                                <form:input path="email" class="form-control"/>
-                                <form:errors path="email"/>
-                            </div>
-                            <form:hidden path="password"/>
-                            <form:hidden path="roles"/>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">
-                                    <spring:message code="app.edit"/></button>
-                            </div>
-                        </form:form>
-                    </div>
-                </div>
-            </center>
+    <form:form modelAttribute="user" cssClass="form--contact" method="post" action="/admin/user/edit">
+        <form:hidden path="id"/>
+        <div class="form-group form-group--50">
+            <form:input path="firstName"/>
         </div>
-    </div>
+        <div class="form-group form-group--50">
+            <form:input path="lastName"/>
+        </div>
+        <div class="form-group">
+            <form:input path="email"/>
+        </div>
+        <div class="form-group form-group--50">
+
+            <c:forEach items="${roles}" var="role">
+                <input id="roles${role.id}" type="checkbox" name="roles" value="${role.id}">
+                <label for="roles${role.id}">${role.roleType.toString()}</label>
+            </c:forEach>
+        </div>
+        <div class="form-group form-group--50"></div>
+        <form:hidden path="enabled"/>
+
+
+        <button class="btn" type="submit">Edytuj</button>
+        <div class="form-group form-group--50">
+            <a href="/admin" class="btn btn--without-border">Powrót</a>
+        </div>
+    </form:form>
 </div>
+
 <%@include file="../footer.jsp" %>
 </body>
 </html>

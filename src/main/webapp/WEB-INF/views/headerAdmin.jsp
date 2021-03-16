@@ -35,9 +35,8 @@
                 <p>Witaj ${currentUser.firstName}</p>
 
                 <ul class="dropdown">
-                    <li><a href="/app/user/edit">Profil</a></li>
-                    <li><a href="/app/user/profile/change-pass">Zmień Hasło</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
+<%--                    <li><a href="">Zmień Hasło</a></li>--%>
+<%--                    <li><a href="#">Moje zbiórki</a></li>--%>
                     <li>
                         <form action="<c:url value="/logout"/>" method="post">
                             <input type="submit" class="btn-link" value="Wyloguj">
@@ -51,9 +50,18 @@
 
         <ul>
 
-<%--            <li><a href="/#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
-            <li><a href="/app/donation" class="btn btn--without-border">Lista Darów</a></li>
+            <%--            <li><a href="/#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
+            <li><a href="/admin/donation" class="btn btn--without-border">Lista Darów</a></li>
+            <sec:authorize access="hasRole('ADMIN')">
+                <li><a href="/admin/institution" class="btn btn--without-border">Fundacje i organizacje</a></li>
+            </sec:authorize>
             <li><a href="/form" class="btn btn--without-border">Przekaż dary</a></li>
-            <li><a href="/#contact" class="btn btn--without-border">Kontakt</a></li>
+            <sec:authorize access="hasRole('ADMIN')">
+                <li><a href="/admin/user/all" class="btn btn--without-border">Użytkownicy</a></li>
+                <li><a href="/admin/all" class="btn btn--without-border">Administratorzy</a></li>
+            </sec:authorize>
+
         </ul>
     </nav>
+</header>
+

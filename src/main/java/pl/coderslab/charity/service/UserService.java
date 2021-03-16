@@ -15,7 +15,7 @@ public interface UserService {
     void delete(Long id);
     User get(Long id);
     List<User> getUsers();
-
+    void saveUserPassword(User user);
     List<User> findAllByRoleType(RoleType roleType);
 
 //    void sendVerificationEmail(User user,String siteURL);

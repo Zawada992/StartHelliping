@@ -27,7 +27,10 @@ public class HomeController {
         this.donationService = donationService;
         this.userService = userService;
     }
-
+    @RequestMapping("/admin")
+    public String adminPanel(Model model){
+        return "panelAdmin";
+    }
 
     @RequestMapping("/")
     public String homeAction(Model model){
@@ -47,12 +50,7 @@ public class HomeController {
         return "loginPage";
     }
 
-//    @GetMapping("/user/all")
-//    public String showAllUsers(Model model) {
-//        List<User> users = userService.getUsers();
-//        model.addAttribute("user", users);
-//        return "user/allUser";
-//    }
+
     @RequestMapping("/user/add")
     public  String addUser(Model model){
         model.addAttribute("user", new User());
@@ -65,8 +63,6 @@ public class HomeController {
         if (!user.getPassword().equals(password2)) {
             return "user/registration";
         }
-
-
         userService.saveUser(user);
         return "redirect:/login";
     }

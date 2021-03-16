@@ -27,14 +27,14 @@ public class InstitutionController {
         return "institution/institution";
 
     }
-    @RequestMapping("/institution/add")
+    @RequestMapping("/admin/institution/add")
     public  String addUser(Model model){
         model.addAttribute("inst", new Institution());
         return "institution/add";
     }
 
     //    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    @PostMapping("/institution/add")
+    @PostMapping("/admin/institution/add")
     public String saveAddUser(@Valid Institution institution , BindingResult result) {
         if (result.hasErrors()) {
             return "institution/add";
