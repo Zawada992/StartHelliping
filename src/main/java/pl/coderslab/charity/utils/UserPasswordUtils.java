@@ -2,7 +2,7 @@ package pl.coderslab.charity.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 
 @Component
 public class UserPasswordUtils implements PasswordUtils{
@@ -12,7 +12,7 @@ public class UserPasswordUtils implements PasswordUtils{
         this.passwordEncoder = passwordEncoder;
     }
     @Override
-    public boolean checkOldPassword(User user, String oldPassword) {
+    public boolean checkOldPassword(Users user, String oldPassword) {
         return passwordEncoder.matches(oldPassword, user.getPassword());
     }
 

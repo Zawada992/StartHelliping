@@ -2,7 +2,6 @@ package pl.coderslab.charity.service;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.model.Donation;
-import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.DonationRepository;
 
 import javax.swing.text.html.Option;

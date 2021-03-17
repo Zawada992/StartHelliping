@@ -6,7 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.RoleType;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.service.RoleService;
 import pl.coderslab.charity.service.UserService;
 
@@ -29,13 +29,12 @@ public class AdminController {
     public String showAllAdmin(Model model) {
         model.addAttribute("admins", userService.findAllByRoleType(RoleType.ROLE_ADMIN));
         model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("enables", List.of(true, false));
         return "admins/adminsAll";
     }
 
     @GetMapping("/take-off-permissions/{id}")
     public String takeOffPermissionsGet(@PathVariable Long id){
-        User user = userService.get(id);
+        Users user = userService.get(id);
         Role roleTypeAdmin = roleService.findByRoleType(RoleType.ROLE_ADMIN);
         Role roleTypeUser = roleService.findByRoleType(RoleType.ROLE_USER);
 
@@ -54,7 +53,7 @@ public class AdminController {
 
     @GetMapping("/user/all")
     public String showAllUsers(Model model) {
-        List<User> users = userService.getUsers();
+        List<Users> users = userService.getUsers();
         model.addAttribute("user", users);
         return "user/allUser";
     }
@@ -68,7 +67,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/user/edit", method = RequestMethod.POST)
-    public String saveEditUser (@Valid @ModelAttribute("user") User user,
+    public String saveEditUser (@Valid @ModelAttribute("user") Users user,
                                 BindingResult result){
         if(result.hasErrors()){
             return "user/editUserAdmin";
@@ -85,7 +84,7 @@ public class AdminController {
 
     @GetMapping("/user/switch-enable/{id}")
     public String switchEnable(@PathVariable Long id){
-        User user = userService.get(id);
+        Users user = userService.get(id);
         user.setEnabled(!user.isEnabled());
         userService.add(user);
         return "redirect:/admin/user/all";

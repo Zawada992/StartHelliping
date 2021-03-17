@@ -6,7 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.service.UserService;
 
 
@@ -25,7 +25,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) {
-        User user = userService.findByUserEmail(email);
+        Users user = userService.findByUserEmail(email);
         if (user == null) {
             throw new UsernameNotFoundException(email);
         }

@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.service.InstitutionService;
 
 import javax.validation.Valid;

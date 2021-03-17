@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.service.UserService;
 import pl.coderslab.charity.utils.PasswordUtils;
 
@@ -24,17 +24,10 @@ public class UserController {
         this.passwordUtils = passwordUtils;
     }
 
-//    @GetMapping("/user/all")
-//    public String showAllUsers(Model model) {
-//        List<User> users = userService.getUsers();
-//        model.addAttribute("user", users);
-//        return "user/allUser";
-//    }
-
 
     @GetMapping("/edit" )
     public String editUser (Model model, Authentication auth){
-        User currentUser = userService.findByUserEmail(auth.getName());
+        Users currentUser = userService.findByUserEmail(auth.getName());
         Long id = currentUser.getId();
         model.addAttribute("users", userService.get(id));
         return "user/editUser";
@@ -42,7 +35,7 @@ public class UserController {
 
 //    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @PostMapping("/update")
-    public String saveEditUser (@Valid @ModelAttribute("users") User users, BindingResult result){
+    public String saveEditUser (@Valid @ModelAttribute("users") Users users, BindingResult result){
         if(result.hasErrors()){
             return "user/editUser";
         }
@@ -51,7 +44,7 @@ public class UserController {
     }
     @GetMapping("/profile/change-pass")
     public String userChangePassGet( Model model, Authentication auth){
-        User currentUser = userService.findByUserEmail(auth.getName());
+        Users currentUser = userService.findByUserEmail(auth.getName());
         Long id = currentUser.getId();
         model.addAttribute("user", userService.get(id));
         return "change/changePassword";
@@ -65,7 +58,7 @@ public class UserController {
             @RequestParam(name = "confirmPassword") String confirmPassword,
             Model model
     ) {
-        User user = userService.findByUserEmail(auth.getName());
+        Users user = userService.findByUserEmail(auth.getName());
         if(passwordUtils.checkOldPassword(user, oldPassword) && passwordUtils.isPassword(newPassword, confirmPassword)) {
             user.setPassword(newPassword);
             userService.saveUserPassword(user);
@@ -80,7 +73,7 @@ public class UserController {
 
     @RequestMapping("/delete")
     public String deleteUser(Authentication auth){
-        User currentUser = userService.findByUserEmail(auth.getName());
+        Users currentUser = userService.findByUserEmail(auth.getName());
         Long id = currentUser.getId();
         userService.delete(id);
         return "index";

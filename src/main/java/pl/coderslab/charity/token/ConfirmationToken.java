@@ -2,7 +2,8 @@ package pl.coderslab.charity.token;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ public class ConfirmationToken {
     private String token;
     private LocalDateTime confirmedAt;
     @ManyToOne
-    private User user;
+    private Users user;
     @Enumerated(EnumType.STRING)
     private TokenType tokenType;
     private boolean used;

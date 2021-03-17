@@ -1,8 +1,8 @@
 package pl.coderslab.charity.utils;
 
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 
 public interface PasswordUtils {
-    boolean checkOldPassword(User user, String oldPassword);
+    boolean checkOldPassword(Users user, String oldPassword);
     boolean isPassword (String newPassword, String confirmPassword);
 }

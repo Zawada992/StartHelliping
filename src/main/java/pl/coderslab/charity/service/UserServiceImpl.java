@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.email.EmailService;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.RoleType;
-import pl.coderslab.charity.model.User;
-import pl.coderslab.charity.repository.RoleRepository;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.repository.UserRepository;
 import pl.coderslab.charity.token.ConfirmationToken;
 import pl.coderslab.charity.token.ConfirmationTokenService;
@@ -40,12 +39,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User findByUserEmail(String email) {
+    public Users findByUserEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(Users user) {
         user.setEnabled(false);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Set.of(roleService.findByRoleType(RoleType.ROLE_USER)));
@@ -68,13 +67,13 @@ public class UserServiceImpl implements UserService {
         );
     }
     @Override
-    public void saveUserPassword (User user){
+    public void saveUserPassword (Users user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     @Override
-    public void add(User user) {
+    public void add(Users user) {
         userRepository.save(user);
     }
 
@@ -84,25 +83,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(Long id) {
+    public Users get(Long id) {
         return userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("User does not exists"));
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<Users> getUsers() {
         return userRepository.findAll();
     }
 
 
 
     @Override
-    public List<User> findAllByRoleType(RoleType roleType) {
+    public List<Users> findAllByRoleType(RoleType roleType) {
         Role role = roleService.findByRoleType(roleType);
         return userRepository.findAllByRoleType(role);
     }
 
     @Override
-    public void forgotPassword(User user) {
+    public void forgotPassword(Users user) {
         ConfirmationToken token = new ConfirmationToken();
         token.setUsed(false);
         token.setTokenType(TokenType.PASSWORD);

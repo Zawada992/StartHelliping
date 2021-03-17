@@ -27,7 +27,7 @@ public class Donation {
     private String pickUpComment;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private User user;
+    private Users user;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Category> categories;

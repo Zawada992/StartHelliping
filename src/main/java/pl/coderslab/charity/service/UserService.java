@@ -3,21 +3,21 @@ package pl.coderslab.charity.service;
 
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.RoleType;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 
 import java.util.List;
 
 public interface UserService {
 
-    User findByUserEmail(String email);
-    void saveUser(User user);
-    void add(User user);
+    Users findByUserEmail(String email);
+    void saveUser(Users user);
+    void add(Users user);
     void delete(Long id);
-    User get(Long id);
-    List<User> getUsers();
-    void saveUserPassword(User user);
-    List<User> findAllByRoleType(RoleType roleType);
-    void forgotPassword(User user);
+    Users get(Long id);
+    List<Users> getUsers();
+    void saveUserPassword(Users user);
+    List<Users> findAllByRoleType(RoleType roleType);
+    void forgotPassword(Users user);
 
 
 }
