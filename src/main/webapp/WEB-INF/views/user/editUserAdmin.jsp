@@ -46,7 +46,7 @@
 
                             <div class="form-group">
                                 <button class="btn" type="submit">Edytuj</button>
-                                <a href="/admin" class="btn btn--without-border">Powrót</a>
+                                <a href="/admin/user/all" class="btn btn--without-border">Powrót</a>
                             </div>
                         </form:form>
                     </div>

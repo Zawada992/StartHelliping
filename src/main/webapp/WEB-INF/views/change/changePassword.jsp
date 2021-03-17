@@ -45,11 +45,10 @@
                                 <h3>Hasła nie pasują do siebie!</h3>
                             </div>
 
-                            <div class="form-group form-group--50">
+                            <div class="form-group ">
                                 <button class="btn" type="submit">Zmień hasło</button>
                             </div>
-
-                            <div class="form-group form-group--50">
+                            <div class="form-group ">
                                 <a href="/app/home" class="btn btn--without-border">Powrót</a>
                             </div>
                         </form:form>

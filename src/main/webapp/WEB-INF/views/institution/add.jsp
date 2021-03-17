@@ -38,6 +38,7 @@
         </div>
         <div class="form-group form-group--buttons">
             <button class="btn" type="submit">${add}</button>
+            <a href="/admin/institution" class="btn btn--without-border">Powrót</a>
         </div>
     </form:form>
 </section>

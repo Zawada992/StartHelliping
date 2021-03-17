@@ -7,38 +7,40 @@
 </head>
 <body>
 <%@ include file="../headerAdmin.jsp" %>
+<section id="institutions" class="steps">
 
+    <h2>Lista fundacji</h2>
 
-<h2>Lista fundacji</h2>
-
-<table class="custom-table">
-    <thead>
-    <tr class="custom-tr-dark">
-        <th class="custom-th">Id</th>
-        <th>Nazwa</th>
-        <th>Cel</th>
-        <th>Akcja</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${institution}" var="institution">
-        <tr class="custom-tr">
-            <td class="custom-td">${institution.id}</td>
-            <td class="custom-td">${institution.name}</td>
-            <td class="custom-td">${institution.description}</td>
-            <td class="custom-td">
-                <a href="/admin/institution/edit/${institution.id}" class="btn btn--without-border">Edytuj</a>
-                <a href="/admin/institution/delete/${institution.id}" class="btn btn--without-border">Usuń</a>
-            </td>
+    <table class="custom-table">
+        <thead>
+        <tr class="custom-tr-dark">
+            <th class="custom-th">Id</th>
+            <th>Nazwa</th>
+            <th>Cel</th>
+            <th>Akcja</th>
         </tr>
-    </c:forEach>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <c:forEach items="${institution}" var="institution">
+            <tr class="custom-tr">
+                <td class="custom-td">${institution.id}</td>
+                <td class="custom-td">${institution.name}</td>
+                <td class="custom-td">${institution.description}</td>
+                <td class="custom-td">
+                    <a href="/admin/institution/edit/${institution.id}" class="btn btn--without-border">Edytuj</a>
+                    <a href="/admin/institution/delete/${institution.id}" class="btn btn--without-border">Usuń</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
 
-<a href="/admin/institution/add" class="btn btn--large">Dodaj fundację</a>
-<a href="/admin" class="btn btn--without-border">Powrót</a>
+    </table>
+    <div class="form-group form-group--50">
+        <a href="/admin/institution/add" class="btn btn--without-border">Dodaj fundację</a>
+        <a href="/admin" class="btn btn--without-border">Powrót</a>
+    </div>
 
 
-<%@ include file="../footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
 </body>
 </html>

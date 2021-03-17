@@ -12,7 +12,8 @@
 <head>
     <title>Title</title>
 </head>
-<<%@ include file="../headerLog.jsp" %>
+
+<%@ include file="../headerLog.jsp" %>
 <body>
 <section class="login-page">
     <h2>${editFund}</h2>
@@ -36,9 +37,11 @@
             </div>
 
         </div>
-        </div>
+
         <div class="form-group form-group--buttons">
             <button class="btn" type="submit">${edit}</button>
+            <a href="/admin/institution" class="btn btn--without-border">Powrót</a>
+        </div>
         </div>
     </form:form>
 </section>

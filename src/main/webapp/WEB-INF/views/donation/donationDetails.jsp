@@ -49,6 +49,7 @@
                                     <h3>${donation.zipCode}</h3>
                                 </div>
                             </div>
+                            <a href="/admin/donation" class="btn btn--without-border">Powrót</a>
                         </div>
                     </div>
                 </div>

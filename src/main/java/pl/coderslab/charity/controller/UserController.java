@@ -24,14 +24,6 @@ public class UserController {
         this.passwordUtils = passwordUtils;
     }
 
-//    @GetMapping("/user/all")
-//    public String showAllUsers(Model model) {
-//        List<User> users = userService.getUsers();
-//        model.addAttribute("user", users);
-//        return "user/allUser";
-//    }
-
-
     @GetMapping("/edit" )
     public String editUser (Model model, Authentication auth){
         User currentUser = userService.findByUserEmail(auth.getName());
@@ -40,7 +32,7 @@ public class UserController {
         return "user/editUser";
     }
 
-//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+
     @PostMapping("/update")
     public String saveEditUser (@Valid @ModelAttribute("users") User users, BindingResult result){
         if(result.hasErrors()){
@@ -72,11 +64,9 @@ public class UserController {
             return "redirect:/app/home";
         }else {
             model.addAttribute("user", user);
-            return "profile/changePasswdFail";
+            return "change/changePasswordFail";
         }
     }
-
-
 
     @RequestMapping("/delete")
     public String deleteUser(Authentication auth){

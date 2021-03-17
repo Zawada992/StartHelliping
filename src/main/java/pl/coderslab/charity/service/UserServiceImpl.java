@@ -8,7 +8,6 @@ import pl.coderslab.charity.email.EmailService;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.RoleType;
 import pl.coderslab.charity.model.User;
-import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 import pl.coderslab.charity.token.ConfirmationToken;
 import pl.coderslab.charity.token.ConfirmationTokenService;
@@ -48,7 +47,10 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setEnabled(false);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(Set.of(roleService.findByRoleType(RoleType.ROLE_USER)));
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleService.findByRoleType(RoleType.ROLE_USER));
+        user.setRoles(roles);
+//        user.setRoles(Set.of(roleService.findByRoleType(RoleType.ROLE_USER)));
 
         ConfirmationToken token = new ConfirmationToken();
         token.setUser(user);
