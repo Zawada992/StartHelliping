@@ -58,7 +58,7 @@ public class DonationController {
         return "donation/donationUser";
     }
 
-    @GetMapping("/app/donation/details/{id}")
+    @GetMapping("/donation/details/{id}")
     public String showDetails(Model model, @PathVariable Long id){
         Donation donations = donationService.getById(id);
         model.addAttribute("donation", donations);

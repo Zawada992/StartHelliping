@@ -2,15 +2,15 @@ package pl.coderslab.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 import pl.coderslab.charity.service.UserService;
+import pl.coderslab.charity.token.ConfirmationToken;
+import pl.coderslab.charity.token.ConfirmationTokenService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -21,11 +21,13 @@ public class HomeController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
     private final UserService userService;
+    private final ConfirmationTokenService confirmationTokenService;
 
-    public HomeController(InstitutionService institutionService, DonationService donationService, UserService userService) {
+    public HomeController(InstitutionService institutionService, DonationService donationService, UserService userService, ConfirmationTokenService confirmationTokenService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.userService = userService;
+        this.confirmationTokenService = confirmationTokenService;
     }
     @RequestMapping("/admin")
     public String adminPanel(Model model){
@@ -64,7 +66,68 @@ public class HomeController {
             return "user/registration";
         }
         userService.saveUser(user);
-        return "redirect:/login";
+        return "info/emailSend";
+    }
+
+    //CONFIRMATION FROM EMAIL
+    @GetMapping("/register/confirm")
+    public String registerConfirmGet(@RequestParam String token) {
+        ConfirmationToken confirmationToken = confirmationTokenService.findByToken(token);
+        User user = confirmationToken.getUser();
+        user.setEnabled(true);
+        userService.add(user);
+        confirmationTokenService.delete(confirmationToken);
+        return "info/activation";
+    }
+
+    //FORGOT PASSWORD
+    @GetMapping("/register/forgot-pass")
+    public String enterMailGet() {
+        return "info/forgotPassSetEmail";
+    }
+
+    @PostMapping("/register/forgot-pass")
+    public String enterMailPost(@RequestParam String email) {
+        User user = userService.findByUserEmail(email);
+        if (user == null) {
+            return "info/emailNotFound";
+        }
+        userService.forgotPassword(user);
+        return "info/newPassMailSend";
+    }
+
+    //FORGOT SET NEW PASSWORD
+    @GetMapping("/register/forgot-pass/set-new")
+    public String setNewPassGet(@RequestParam String token, Model model) {
+        model.addAttribute("token", token);
+        return "info/forgotPassSetNewPass";
+    }
+
+    @PostMapping("/register/forgot-pass/set-new")
+    public String setNewPassPost(
+            @RequestParam String token,
+            @RequestParam String newPassword,
+            @RequestParam String confirmPassword,
+            Model model
+    ) {
+        ConfirmationToken confirmationToken;
+
+        try {
+            confirmationToken = confirmationTokenService.findByToken(token);
+        } catch (IllegalStateException e) {
+            return "info/notValidToken";
+        }
+
+        if (newPassword.equals(confirmPassword)) {
+            User user = confirmationToken.getUser();
+            user.setPassword(newPassword);
+            userService.saveUserPassword(user);
+            confirmationTokenService.delete(confirmationToken);
+            return "info/passwordChanged";
+        } else {
+            model.addAttribute("token", token);
+            return "info/forgotPassSetNewPassFail";
+        }
     }
 
 }

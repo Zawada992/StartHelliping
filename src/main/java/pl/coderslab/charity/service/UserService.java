@@ -8,7 +8,7 @@ import pl.coderslab.charity.model.User;
 import java.util.List;
 
 public interface UserService {
-//    User findByUserName(String userName);
+
     User findByUserEmail(String email);
     void saveUser(User user);
     void add(User user);
@@ -17,8 +17,7 @@ public interface UserService {
     List<User> getUsers();
     void saveUserPassword(User user);
     List<User> findAllByRoleType(RoleType roleType);
+    void forgotPassword(User user);
 
-//    void sendVerificationEmail(User user,String siteURL);
-//    void verifyAcc(String verifyCode);
 
 }

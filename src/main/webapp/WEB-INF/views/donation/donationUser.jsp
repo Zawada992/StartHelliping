@@ -26,6 +26,7 @@
                 <td class="custom-td">${donation.institution.name}</td>
                 <td class="custom-td">${donation.quantity}</td>
                 <td class="custom-td">
+                    <a href="/donation/details/${donation.id}" class="btn btn--without-border">Szczegóły</a>
                     <a href="/admin/institution/edit/${donation.id}" class="btn btn--without-border">Edytuj</a>
                     <a href="/admin/institution/delete/${donation.id}" class="btn btn--without-border">Usuń</a>
                 </td>

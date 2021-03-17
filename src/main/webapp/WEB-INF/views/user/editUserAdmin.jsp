@@ -15,37 +15,45 @@
 <body>
 <%@include file="../headerAdmin.jsp" %>
 
+<div class="row">
+    <center>
+        <div class="col-xl-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div>
+                        <h2>Edytuj ${user.firstName} ${user.lastName}</h2>
 
-<div class="contact" id="contact">
-    <h2>Edytuj ${user.firstName} ${user.lastName}</h2>
+                        <form:form modelAttribute="user" method="post"
+                                   action="/admin/user/edit">
+                            <form:hidden path="id"/>
+                            <div class="form-group ">
+                                <form:input path="firstName"/>
+                            </div>
+                            <div class="form-group ">
+                                <form:input path="lastName"/>
+                            </div>
+                            <div class="form-group">
+                                <form:input path="email"/>
+                            </div>
+                            <div class="form-group">
 
-    <form:form modelAttribute="user" cssClass="form--contact" method="post" action="/admin/user/edit">
-        <form:hidden path="id"/>
-        <div class="form-group form-group--50">
-            <form:input path="firstName"/>
-        </div>
-        <div class="form-group form-group--50">
-            <form:input path="lastName"/>
-        </div>
-        <div class="form-group">
-            <form:input path="email"/>
-        </div>
-        <div class="form-group form-group--50">
+                                <c:forEach items="${roles}" var="role">
+                                    <input id="roles${role.id}" type="checkbox" name="roles" value="${role.id}">
+                                    <label for="roles${role.id}">${role.roleType.toString()}</label>
+                                </c:forEach>
+                            </div>
+                            <form:hidden path="enabled"/>
 
-            <c:forEach items="${roles}" var="role">
-                <input id="roles${role.id}" type="checkbox" name="roles" value="${role.id}">
-                <label for="roles${role.id}">${role.roleType.toString()}</label>
-            </c:forEach>
+                            <div class="form-group">
+                                <button class="btn" type="submit">Edytuj</button>
+                                <a href="/admin" class="btn btn--without-border">Powrót</a>
+                            </div>
+                        </form:form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group form-group--50"></div>
-        <form:hidden path="enabled"/>
-
-
-        <button class="btn" type="submit">Edytuj</button>
-        <div class="form-group form-group--50">
-            <a href="/admin" class="btn btn--without-border">Powrót</a>
-        </div>
-    </form:form>
+    </center>
 </div>
 
 <%@include file="../footer.jsp" %>

@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/app/**").hasAnyRole("USER")
                 .antMatchers("/form").authenticated()
+                .antMatchers("/donation/**").authenticated()
                 .anyRequest().permitAll()
                 .and().formLogin().usernameParameter("email").loginPage("/login")
                 .successHandler(myAuthenticationSuccessHandler())

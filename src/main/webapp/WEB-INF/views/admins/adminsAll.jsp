@@ -43,9 +43,8 @@
                     </c:forEach>
                 </td>
                 <td class="custom-td">
-                    <a href="/admin/user/edit/${user.id}" class="btn btn--without-border">Edytuj</a>
-                    <a href="/admin/user/delete/${user.id}" class="btn btn--without-border">Usuń</a>
-                    <a href="/admin/admin/take-off-permissions/${admin.id}" class="btn btn--without-border">Zdejmij uprawnienia admina</a>
+                    <a href="/admin/user/edit/${admin.id}" class="btn btn--without-border">Edytuj</a>
+                    <a href="/admin/take-off-permissions/${admin.id}" class="btn btn--without-border">Zdejmij uprawnienia admina</a>
                 </td>
             </tr>
         </c:forEach>

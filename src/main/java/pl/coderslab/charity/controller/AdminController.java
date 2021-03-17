@@ -25,7 +25,6 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-
     @GetMapping("/all")
     public String showAllAdmin(Model model) {
         model.addAttribute("admins", userService.findAllByRoleType(RoleType.ROLE_ADMIN));
@@ -34,7 +33,7 @@ public class AdminController {
         return "admins/adminsAll";
     }
 
-    @GetMapping("//take-off-permissions/{id}")
+    @GetMapping("/take-off-permissions/{id}")
     public String takeOffPermissionsGet(@PathVariable Long id){
         User user = userService.get(id);
         Role roleTypeAdmin = roleService.findByRoleType(RoleType.ROLE_ADMIN);
@@ -67,6 +66,7 @@ public class AdminController {
         model.addAttribute("enables", List.of(true, false));
         return "user/editUserAdmin";
     }
+
     @RequestMapping(value = "/user/edit", method = RequestMethod.POST)
     public String saveEditUser (@Valid @ModelAttribute("user") User user,
                                 BindingResult result){
