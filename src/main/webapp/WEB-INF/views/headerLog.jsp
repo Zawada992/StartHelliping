@@ -51,7 +51,7 @@
 
         <ul>
 
-<%--            <li><a href="/#steps" class="btn btn--without-border">O co chodzi?</a></li>--%>
+
             <li><a href="/app/donation" class="btn btn--without-border">Lista Darów</a></li>
             <li><a href="/form" class="btn btn--without-border">Przekaż dary</a></li>
             <li><a href="/#contact" class="btn btn--without-border">Kontakt</a></li>

@@ -24,6 +24,8 @@ public class UserServiceImpl implements UserService {
     private final  RoleService roleService;
     private final EmailService emailService;
     private final ConfirmationTokenService confirmationTokenService;
+    private static final String LOCAL_LINK = "http://localhost:8080";
+    private static final String HEROKU_LINK = "https://start-hellping.herokuapp.com";
 
 
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,
@@ -65,7 +67,7 @@ public class UserServiceImpl implements UserService {
                 "Charity.com: Aktywacja konta",
                 buildEmailVerify(
                         user.getFirstName(),
-                        "http://localhost:8080/register/confirm?token=" + token.getToken()
+                        LOCAL_LINK + "/register/confirm?token=" + token.getToken()
                 )
         );
     }
@@ -117,7 +119,7 @@ public class UserServiceImpl implements UserService {
                 "Charity.com: Zapomniane hasło",
                 buildEmailForgotPass(
                         user.getFirstName(),
-                        "http://localhost:8080/register/forgot-pass/set-new?token=" + token.getToken()
+                        LOCAL_LINK + "/register/forgot-pass/set-new?token=" + token.getToken()
                 )
         );
     }

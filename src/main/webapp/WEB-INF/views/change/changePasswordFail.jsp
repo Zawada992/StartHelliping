@@ -12,7 +12,7 @@
 <div class="row">
     <center>
         <div class="col-xl-8">
-            <!-- Account details card-->
+
             <div class="card mb-4">
                 <div class="contact" id="contact">
                     <h2>${user.firstName} ${user.lastName}</h2>

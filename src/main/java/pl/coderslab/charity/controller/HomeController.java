@@ -59,7 +59,7 @@ public class HomeController {
         return "user/registration";
     }
 
-    //    @RequestMapping(value = "/add", method = RequestMethod.POST)
+
     @PostMapping("/user/add")
     public String saveAddUser(@Valid User user, @RequestParam("password2") String password2) {
         if (!user.getPassword().equals(password2)) {

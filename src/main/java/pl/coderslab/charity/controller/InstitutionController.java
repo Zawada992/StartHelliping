@@ -33,7 +33,7 @@ public class InstitutionController {
         return "institution/add";
     }
 
-    //    @RequestMapping(value = "/add", method = RequestMethod.POST)
+
     @PostMapping("/admin/institution/add")
     public String saveAddUser(@Valid Institution institution , BindingResult result) {
         if (result.hasErrors()) {

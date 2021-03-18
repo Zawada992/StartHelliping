@@ -35,8 +35,7 @@
                 <p>Witaj ${currentUser.firstName}</p>
 
                 <ul class="dropdown">
-<%--                    <li><a href="">Zmień Hasło</a></li>--%>
-<%--                    <li><a href="#">Moje zbiórki</a></li>--%>
+
                     <li>
                         <form action="<c:url value="/logout"/>" method="post">
                             <input type="submit" class="btn-link" value="Wyloguj">

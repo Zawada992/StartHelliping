@@ -8,7 +8,7 @@
 <spring:message code="app.login.lastName" var="lastName"/>
 <spring:message code="app.login.userName" var="userName"/>
 <spring:message code="app.login.password" var="password"/>
-<%--<spring:message code="app.login.password2" var="password2"/>--%>
+<spring:message code="app.login.password2" var="password2"/>
 <spring:message code="app.register.email" var="email"/>
 <spring:message code="app.register.info" var="info"/>
 <spring:message code="app.login.loginButton" var="logs"/>
