@@ -4,17 +4,17 @@
 The aim of the project is to create a place where everyone can donate unnecessary things to trusted institutions.
 
 
-Technologies used in the project:
+##Technologies used in the project:
   - Spring Boot
   - Spring Form
   - Hibernate
   - Spring Data JPA
   - Spring Security
-Database:
+##Database:
   -MySQL
   -PostgreSQL in heroku
 
-There are two ways to start a project:
+##There are two ways to start a project:
 1. You can follow the link to the project on heroku: https://start-hellping.herokuapp.com/
 2. Import the project as a Maven project, following the instructions below:
 
