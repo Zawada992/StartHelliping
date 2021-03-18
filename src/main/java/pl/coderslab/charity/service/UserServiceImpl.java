@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     private final EmailService emailService;
     private final ConfirmationTokenService confirmationTokenService;
     private static final String LOCAL_LINK = "http://localhost:8080";
-    private static final String HEROKU_LINK = "https://start-hellping.herokuapp.com/";
+    private static final String HEROKU_LINK = "https://start-hellping.herokuapp.com";
 
 
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,
