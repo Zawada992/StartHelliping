@@ -97,14 +97,7 @@
                 </c:if>
                 </c:forEach>
             </li>
-<%--            <li>--%>
-<%--                <c:forEach items="${institution}" var="institution" begin="2" end="4">--%>
-<%--                    <div class="col">--%>
-<%--                        <div class="title">${institution.name}</div>--%>
-<%--                        <div class="subtitle">${institution.description}</div>--%>
-<%--                    </div>--%>
-<%--                </c:forEach>--%>
-<%--            </li>--%>
+
         </ul>
     </div>
 

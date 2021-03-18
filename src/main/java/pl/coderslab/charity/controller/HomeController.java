@@ -31,7 +31,7 @@ public class HomeController {
     }
 
     @RequestMapping("/admin")
-    public String adminPanel(Model model){
+    public String adminPanel(){
         return "panelAdmin";
     }
 
