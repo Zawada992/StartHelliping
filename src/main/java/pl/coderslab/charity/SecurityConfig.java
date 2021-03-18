@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/form").access("@userSecurity.isEnabled(authentication)")
                 .antMatchers("/donation/**").access("@userSecurity.isEnabled(authentication)")
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/app/**").hasAnyRole("USER")
+                .antMatchers("/app/**").access("hasAnyRole('USER') or @userSecurity.isEnabled(authentication)")
                 .anyRequest().permitAll()
                 .and().formLogin().usernameParameter("email").loginPage("/login")
                 .successHandler(myAuthenticationSuccessHandler())
