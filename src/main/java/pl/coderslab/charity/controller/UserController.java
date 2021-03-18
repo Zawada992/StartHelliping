@@ -16,14 +16,12 @@ import javax.validation.Valid;
 @RequestMapping("/app/user")
 public class UserController {
     private final UserService userService;
-   private final PasswordUtils passwordUtils;
-
+    private final PasswordUtils passwordUtils;
 
     public UserController(UserService userService, PasswordUtils passwordUtils) {
         this.userService = userService;
         this.passwordUtils = passwordUtils;
     }
-
 
     @GetMapping("/edit" )
     public String editUser (Model model, Authentication auth){
@@ -33,7 +31,6 @@ public class UserController {
         return "user/editUser";
     }
 
-//    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @PostMapping("/update")
     public String saveEditUser (@Valid @ModelAttribute("users") Users users, BindingResult result){
         if(result.hasErrors()){
@@ -42,6 +39,7 @@ public class UserController {
         userService.add(users);
         return "redirect:/app/home";
     }
+
     @GetMapping("/profile/change-pass")
     public String userChangePassGet( Model model, Authentication auth){
         Users currentUser = userService.findByUserEmail(auth.getName());
@@ -68,8 +66,6 @@ public class UserController {
             return "profile/changePasswdFail";
         }
     }
-
-
 
     @RequestMapping("/delete")
     public String deleteUser(Authentication auth){

@@ -29,6 +29,7 @@ public class HomeController {
         this.userService = userService;
         this.confirmationTokenService = confirmationTokenService;
     }
+
     @RequestMapping("/admin")
     public String adminPanel(Model model){
         return "panelAdmin";
@@ -42,6 +43,7 @@ public class HomeController {
         model.addAttribute("countDonations", donationService.countDonations());
         return "index";
     }
+
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login() {
         return "login/login";
@@ -59,7 +61,6 @@ public class HomeController {
         return "user/registration";
     }
 
-    //    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @PostMapping("/user/add")
     public String saveAddUser(@Valid Users user, @RequestParam("password2") String password2) {
         if (!user.getPassword().equals(password2)) {
@@ -129,5 +130,4 @@ public class HomeController {
             return "info/forgotPassSetNewPassFail";
         }
     }
-
 }

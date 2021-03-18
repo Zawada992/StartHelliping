@@ -49,7 +49,7 @@ public class DonationController {
             return "form/form";
         }
         donationService.add(donation);
-        return "redirect:/app/home";
+        return "form/form";
     }
     @GetMapping("/admin/donation")
     public String getUserDonations(Model model){

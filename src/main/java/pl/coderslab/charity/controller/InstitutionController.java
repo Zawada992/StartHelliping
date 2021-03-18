@@ -27,13 +27,14 @@ public class InstitutionController {
         return "institution/institution";
 
     }
+
     @RequestMapping("/admin/institution/add")
     public  String addUser(Model model){
         model.addAttribute("inst", new Institution());
         return "institution/add";
     }
 
-    //    @RequestMapping(value = "/add", method = RequestMethod.POST)
+
     @PostMapping("/admin/institution/add")
     public String saveAddUser(@Valid Institution institution , BindingResult result) {
         if (result.hasErrors()) {
@@ -49,6 +50,7 @@ public class InstitutionController {
         model.addAttribute("inst", institutionService.get(id));
         return "institution/editInst";
     }
+
     @RequestMapping(value = "/admin/institution/edit/{id}", method = RequestMethod.POST)
     public String saveEditUser (@Valid @ModelAttribute ("institution") Institution institution,
                                 @PathVariable Long id, BindingResult result){
@@ -58,7 +60,6 @@ public class InstitutionController {
         institutionService.add(institution);
         return "redirect:/admin/institution";
     }
-
 
     @RequestMapping("/admin/institution/delete/{id}")
     public String deleteInst(@PathVariable long id){
