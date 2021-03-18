@@ -1,6 +1,9 @@
 # Name project: StartHeliping
 
 
+The aim of the project is to create a place where everyone can donate unnecessary things to trusted institutions.
+
+
 Technologies used in the project:
   - Spring Boot
   - Spring Form
