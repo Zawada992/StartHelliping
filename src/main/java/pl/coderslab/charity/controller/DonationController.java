@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -51,19 +52,50 @@ public class DonationController {
         donationService.add(donation);
         return "redirect:/app/home";
     }
+
+    //Donation for Admin
+
     @GetMapping("/admin/donation")
-    public String getUserDonations(Model model){
+    public String getAdminDonations(Model model){
         List<Donation> donations = donationService.getAll();
         model.addAttribute("donation", donations);
-        return "donation/donationUser";
+        return "/donation/donationListAdmin";
     }
 
     @GetMapping("/donation/details/{id}")
-    public String showDetails(Model model, @PathVariable Long id){
+    public String showDetailsAdmin(Model model, @PathVariable Long id){
         Donation donations = donationService.getById(id);
         model.addAttribute("donation", donations);
         return "donation/donationDetails";
+    }
+    @GetMapping("/admin/donations/mark-as-taken/{donationId}")
+    public String getDonationAdminChangeStatus(@PathVariable Long donationId) {
+        donationService.switchTaken(donationId);
+        return "redirect:/admin/donation";
+    }
 
+    // Donations for User
+
+    @RequestMapping(value = "/app/donations/{id}", method = RequestMethod.GET)
+    public String getUserDonations(Model model, @PathVariable Long id ) {
+        User user = userService.get(id);
+        model.addAttribute("user", user);
+        model.addAttribute("donations", donationService.findAllByUser(user));
+        return "donation/donationList";
+    }
+
+    @GetMapping("/app/{id}/donation/{donationId}")
+    public String showDetailsUser(@PathVariable Long id, @PathVariable Long donationId, Model model) {
+        User user = userService.get(id);
+        model.addAttribute("user", user);
+        model.addAttribute("donation", donationService.getById(donationId));
+        return "donation/donationDetail";
+    }
+
+    @GetMapping("/app/{id}/donations/mark-as-taken/{donationId}")
+    public String userDonationsGet(@PathVariable Long id,@PathVariable Long donationId) {
+        donationService.switchTaken(donationId);
+        return "redirect:/app/donations"+id;
     }
 
 

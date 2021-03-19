@@ -27,7 +27,7 @@
     %>
 
 
-<header class="header--form-page">
+<header >
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">

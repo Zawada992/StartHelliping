@@ -37,7 +37,7 @@
                 <ul class="dropdown">
                     <li><a href="/app/user/edit">Profil</a></li>
                     <li><a href="/app/user/profile/change-pass">Zmień Hasło</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
+                    <li><a href="/app/donations/${currentUser.id}">Moje zbiórki</a></li>
                     <li>
                         <form action="<c:url value="/logout"/>" method="post">
                             <input type="submit" class="btn-link" value="Wyloguj">
@@ -51,9 +51,11 @@
 
         <ul>
 
-
-            <li><a href="/app/donation" class="btn btn--without-border">Lista Darów</a></li>
+            <li><a href="/app/donations/${currentUser.id}" class="btn btn--without-border">Lista Darów</a></li>
             <li><a href="/form" class="btn btn--without-border">Przekaż dary</a></li>
-            <li><a href="/#contact" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/index#contact" class="btn btn--without-border">Kontakt</a></li>
+            <sec:authorize access="hasRole('ADMIN')">
+                <li><a href="/admin" class="btn btn--without-border">Panel Admin</a></li>
+            </sec:authorize>
         </ul>
     </nav>

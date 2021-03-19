@@ -25,11 +25,15 @@ public class Donation {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
+    private LocalDate pickedUpDate;
+    private LocalTime pickedUpTime;
+    private boolean taken;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "donation_category")
     private List<Category> categories;
 
     @OneToOne (cascade = CascadeType.REMOVE)

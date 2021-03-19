@@ -1,13 +1,7 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<%@ include file="../headerLog.jsp" %>
-<body>
+<%@include file="../headerLog.jsp" %>
 <header class="header--main-page">
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -60,10 +54,9 @@
         </tbody>
     </table>
 
-    <a href="/admin/donation" class="btn btn--large">Powrót</a>
+    <a href="/app/donations/${user.id}" class="btn btn--large">Powrót</a>
 
 </section>
-
+<%@include file="../footer.jsp" %>
 </body>
-<%@ include file="../footer.jsp" %>
 </html>

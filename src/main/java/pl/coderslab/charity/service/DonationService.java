@@ -2,6 +2,7 @@ package pl.coderslab.charity.service;
 
 
 import pl.coderslab.charity.model.Donation;
+import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.model.User;
 
 import javax.swing.text.html.Option;
@@ -15,5 +16,8 @@ public interface DonationService {
     Donation getById(Long id);
     Long getSumBags();
     Long countDonations();
+    List<Donation> findAllByInstitution(Institution institution);
+    List<Donation> findAllByUser(User user);
+    void switchTaken(Long donationId);
 
 }

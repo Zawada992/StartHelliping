@@ -31,10 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/form").access("@userSecurity.isEnabled(authentication)")
-                .antMatchers("/donation/**").access("@userSecurity.isEnabled(authentication)")
+//                .antMatchers("/form").access("@userSecurity.isEnabled(authentication)")
+                .antMatchers("/form").authenticated()
+//                .antMatchers("/donation/**").access("@userSecurity.isEnabled(authentication)")
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/app/**").access("hasAnyRole('USER') or @userSecurity.isEnabled(authentication)")
+                .antMatchers("/app/**").access("hasAnyRole('USER', 'ADMIN') or @userSecurity.isEnabled(authentication)")
                 .anyRequest().permitAll()
                 .and().formLogin().usernameParameter("email").loginPage("/login")
                 .successHandler(myAuthenticationSuccessHandler())

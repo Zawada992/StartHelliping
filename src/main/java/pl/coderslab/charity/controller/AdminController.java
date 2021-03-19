@@ -30,7 +30,10 @@ public class AdminController {
     public String showAllAdmin(Model model) {
         model.addAttribute("admins", userService.findAllByRoleType(RoleType.ROLE_ADMIN));
         model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("enables", List.of(true, false));
+        List<Boolean> bools = new ArrayList<>();
+        bools.add(true);
+        bools.add(false);
+        model.addAttribute("enables", bools);
         return "admins/adminsAll";
     }
 
