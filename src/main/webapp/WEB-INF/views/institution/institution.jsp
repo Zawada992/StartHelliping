@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<spring:message code="app.foundation.list" var="fundationList"/>
 <html>
 <head>
     <title>Title</title>
@@ -9,7 +10,7 @@
 <%@ include file="../headerAdmin.jsp" %>
 <section id="institutions" class="steps">
 
-    <h2>Lista fundacji</h2>
+    <h2>${fundationList}</h2>
 
     <table class="custom-table">
         <thead>
