@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../header.jsp" %>
 <spring:message code="app.login.loginButton" var="loginButton"/>
@@ -9,15 +8,26 @@
 <spring:message code="app.login.createAccount" var="createAccount"/>
 <spring:message code="app.login" var="login"/>
 
+
+
+    <div class="slogan container container--90">
+        <div class="slogan--item">
+            <h1>
+                Logowanie
+            </h1>
+        </div>
+    </div>
+</header>
 <section class="login-page">
     <h2><spring:message code="app.login.logs"/></h2>
     <form class="user" method="post">
         <div class="form-group">
-            <input type="text" name="email" placeholder="${email}" />
+            <input type="text" name="email" placeholder="${email}"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="${password}" />
-            <a href="/register/forgot-pass" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+            <input type="password" name="password" placeholder="${password}"/>
+            <a href="/register/forgot-pass" class="btn btn--small btn--without-border reset-password">Przypomnij
+                hasło</a>
         </div>
 
         <div class="form-group form-group--buttons">

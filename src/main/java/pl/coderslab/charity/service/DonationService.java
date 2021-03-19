@@ -3,7 +3,7 @@ package pl.coderslab.charity.service;
 
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -17,7 +17,7 @@ public interface DonationService {
     Long getSumBags();
     Long countDonations();
     List<Donation> findAllByInstitution(Institution institution);
-    List<Donation> findAllByUser(User user);
+    List<Donation> findAllByUser(Users user);
     void switchTaken(Long donationId);
 
 }

@@ -59,7 +59,7 @@
         </tbody>
     </table>
 
-    <a href="#" class="btn btn--large">####</a>
+    <a href="/admin" class="btn btn--large">Powrót</a>
 </section>
 
 

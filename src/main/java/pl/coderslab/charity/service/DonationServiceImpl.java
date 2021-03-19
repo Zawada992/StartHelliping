@@ -3,7 +3,7 @@ package pl.coderslab.charity.service;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.repository.DonationRepository;
 
 import javax.swing.text.html.Option;
@@ -58,7 +58,7 @@ public class DonationServiceImpl implements DonationService{
     }
 
     @Override
-    public List<Donation> findAllByUser(User user) {
+    public List<Donation> findAllByUser(Users user) {
         return donationRepository.findAllByUser(user);
     }
 

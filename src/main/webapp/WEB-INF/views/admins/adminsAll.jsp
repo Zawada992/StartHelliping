@@ -14,7 +14,7 @@
 <body>
 <%@ include file="../headerAdmin.jsp" %>
 
-
+<section id="adminsAll" class="steps">
     <h2>Lista administratorów</h2>
     <table class="custom-table">
         <thead>
@@ -51,10 +51,9 @@
         </tbody>
     </table>
 
-    <div class="form-group form-group--50">
-        <a href="/admin" class="btn btn--without-border">Powrót</a>
-    </div>
+        <a href="/admin" class="btn btn--large">Powrót</a>
 
+</section>
 
 
 <%@ include file="../footer.jsp" %>

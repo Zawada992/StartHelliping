@@ -2,7 +2,7 @@
 <%@ page import="org.springframework.web.context.WebApplicationContext" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="pl.coderslab.charity.service.UserService" %>
-<%@ page import="pl.coderslab.charity.model.User" %>
+<%@ page import="pl.coderslab.charity.model.Users" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
@@ -22,7 +22,7 @@
                 String name = SecurityContextHolder.getContext().getAuthentication().getName();
                 WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
                 UserService userService = context.getBean(UserService.class);
-                User currentUser = userService.findByUserEmail(name);
+                Users currentUser = userService.findByUserEmail(name);
                 pageContext.setAttribute("currentUser", currentUser);
     %>
 

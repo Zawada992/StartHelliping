@@ -63,5 +63,3 @@ l
 <src/main/webapp/WEB-INF/views/donation/donationListAdmin.jsp,b/a/bab623debac5975c050c64ef3e16cd1f80ddc186
 q
 Asrc/main/java/pl/coderslab/charity/controller/UserController.java,6/0/6057ec3deef38f9be04444fdcb6fa7b29e459f04
-b
-2src/main/java/pl/coderslab/charity/model/User.java,7/6/768abf803e7e9cf13b84ffa52470b4fb84b99efd

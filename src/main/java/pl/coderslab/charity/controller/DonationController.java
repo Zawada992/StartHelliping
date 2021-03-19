@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -78,7 +78,7 @@ public class DonationController {
 
     @RequestMapping(value = "/app/donations/{id}", method = RequestMethod.GET)
     public String getUserDonations(Model model, @PathVariable Long id ) {
-        User user = userService.get(id);
+        Users user = userService.get(id);
         model.addAttribute("user", user);
         model.addAttribute("donations", donationService.findAllByUser(user));
         return "donation/donationList";
@@ -86,7 +86,7 @@ public class DonationController {
 
     @GetMapping("/app/{id}/donation/{donationId}")
     public String showDetailsUser(@PathVariable Long id, @PathVariable Long donationId, Model model) {
-        User user = userService.get(id);
+        Users user = userService.get(id);
         model.addAttribute("user", user);
         model.addAttribute("donation", donationService.getById(donationId));
         return "donation/donationDetail";

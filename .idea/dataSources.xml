@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:mysql://localhost:3306/charity-donation</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="postgres@localhost" uuid="ff073e9c-88d1-4fd9-9637-66f371e8033f">
+    <data-source source="LOCAL" name="postgres@localhost" uuid="74f1a6a3-1946-4928-abb5-987b087c4a46">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

@@ -30,7 +30,7 @@ public class Donation {
     private boolean taken;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private User user;
+    private Users user;
 
     @ManyToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinTable(name = "donation_category")

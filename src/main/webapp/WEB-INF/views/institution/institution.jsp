@@ -33,13 +33,12 @@
             </tr>
         </c:forEach>
         </tbody>
-
     </table>
-    <div class="form-group form-group--50">
-        <a href="/admin/institution/add" class="btn btn--without-border">Dodaj fundację</a>
-        <a href="/admin" class="btn btn--without-border">Powrót</a>
-    </div>
 
+    <a href="/admin/institution/add" class="btn btn--large">Dodaj fundację</a>
+    <a href="/admin" class="btn btn--large">Powrót</a>
+
+</section>
 
     <%@ include file="../footer.jsp" %>
 </body>

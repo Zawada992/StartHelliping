@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
-<header class="header--main-page">
-    <%@include file="../header.jsp" %>
+<header >
+    <%@include file="../headerLog.jsp" %>
     <div class="slogan container container--90">
         <div class="slogan--item">
             <h1>

@@ -2,19 +2,16 @@ package pl.coderslab.charity.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.bytebuddy.utility.RandomString;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
-import java.util.List;
 import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +29,5 @@ public class User {
     private Set<Role> roles;
 
     private boolean enabled;
-
-
-
 
 }

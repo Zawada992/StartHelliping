@@ -6,15 +6,7 @@
     <title>Title</title>
 </head>
 <%@ include file="../headerAdmin.jsp" %>
-<header class="header--main-page">
-    <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                Lista darów
-            </h1>
-        </div>
-    </div>
-</header>
+
 <section id="donations" class="steps">
     <h2>Lista darów</h2>
 
@@ -62,6 +54,7 @@
     </table>
 
     <a href="/form" class="btn btn--large">Przekaż dary</a>
+    <a href="/admin" class="btn btn--large">Powrót</a>
 </section>
     <%@ include file="../footer.jsp" %>
 </body>

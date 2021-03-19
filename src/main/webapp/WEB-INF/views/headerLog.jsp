@@ -2,7 +2,7 @@
 <%@ page import="org.springframework.web.context.WebApplicationContext" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="pl.coderslab.charity.service.UserService" %>
-<%@ page import="pl.coderslab.charity.model.User" %>
+<%@ page import="pl.coderslab.charity.model.Users" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
@@ -22,7 +22,7 @@
                 String name = SecurityContextHolder.getContext().getAuthentication().getName();
                 WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
                 UserService userService = context.getBean(UserService.class);
-                User currentUser = userService.findByUserEmail(name);
+                Users currentUser = userService.findByUserEmail(name);
                 pageContext.setAttribute("currentUser", currentUser);
     %>
 
@@ -53,7 +53,7 @@
 
             <li><a href="/app/donations/${currentUser.id}" class="btn btn--without-border">Lista Darów</a></li>
             <li><a href="/form" class="btn btn--without-border">Przekaż dary</a></li>
-            <li><a href="/index#contact" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/#contact" class="btn btn--without-border">Kontakt</a></li>
             <sec:authorize access="hasRole('ADMIN')">
                 <li><a href="/admin" class="btn btn--without-border">Panel Admin</a></li>
             </sec:authorize>

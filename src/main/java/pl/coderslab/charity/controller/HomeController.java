@@ -4,7 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Institution;
-import pl.coderslab.charity.model.User;
+
+import pl.coderslab.charity.model.Users;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 import pl.coderslab.charity.service.UserService;
@@ -55,13 +56,13 @@ public class HomeController {
 
     @RequestMapping("/user/add")
     public  String addUser(Model model){
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new Users());
         return "user/registration";
     }
 
 
     @PostMapping("/user/add")
-    public String saveAddUser(@Valid User user, @RequestParam("password2") String password2) {
+    public String saveAddUser(@Valid Users user, @RequestParam("password2") String password2) {
         if (!user.getPassword().equals(password2)) {
             return "user/registration";
         }
@@ -73,7 +74,7 @@ public class HomeController {
     @GetMapping("/register/confirm")
     public String registerConfirmGet(@RequestParam String token) {
         ConfirmationToken confirmationToken = confirmationTokenService.findByToken(token);
-        User user = confirmationToken.getUser();
+        Users user = confirmationToken.getUser();
         user.setEnabled(true);
         userService.add(user);
         confirmationTokenService.delete(confirmationToken);
@@ -88,7 +89,7 @@ public class HomeController {
 
     @PostMapping("/register/forgot-pass")
     public String enterMailPost(@RequestParam String email) {
-        User user = userService.findByUserEmail(email);
+        Users user = userService.findByUserEmail(email);
         if (user == null) {
             return "info/emailNotFound";
         }
@@ -119,7 +120,7 @@ public class HomeController {
         }
 
         if (newPassword.equals(confirmPassword)) {
-            User user = confirmationToken.getUser();
+            Users user = confirmationToken.getUser();
             user.setPassword(newPassword);
             userService.saveUserPassword(user);
             confirmationTokenService.delete(confirmationToken);
