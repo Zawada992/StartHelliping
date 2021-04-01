@@ -1,11 +1,11 @@
 
-f
-java:S1192("IDefine a constant instead of duplicating this literal "donation" 4 times.(Ãÿ–8›ÊÿÍ„/
-^
-java:S4488#"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ù¹³Ü
-[
-java:S46840"@Replace this persistent entity with a simple POJO or DTO object.(ŠšŸøÿÿÿÿ
-l
-java:S4488."JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(”—ĞÖüÿÿÿÿ8›ÊÿÍ„/
-e
-java:S4488O"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(óÛòä8¸ˆíĞ„/
+c
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(óÛòä8¯ÒÜâ„/
+c
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ù¹³Ü8¯ÒÜâ„/
+d
+java:S1192"IDefine a constant instead of duplicating this literal "donation" 4 times.(Ãÿ–8¯ÒÜâ„/
+`
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(ŠšŸøÿÿÿÿ8¯ÒÜâ„/
+j
+java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(”—ĞÖüÿÿÿÿ8¯ÒÜâ„/

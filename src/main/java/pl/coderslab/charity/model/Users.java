@@ -16,11 +16,15 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Pattern(regexp = "[A-Z][a-zA-Z]*", message = "Imię z wielkiej litery")
     private String firstName;
+    @Pattern(regexp = "[A-Z][a-zA-Z]*", message = "Nazwisko z wielkiej litery")
     private String lastName;
     @Email
     private String email;
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=])(?=.*[A-Z])(?!.*\\s).{8,}$")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=])(?=.*[A-Z])(?!.*\\s).{8,}$",
+            message ="Hasło musi mieć minimum 8 znaków oraz wielkie," +
+            " małe litery cyfry i znaki specjalne!!!")
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
