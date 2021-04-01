@@ -10,7 +10,7 @@
 <spring:message code="app.edit.fundation" var="editFund"/>
 <html>
 <head>
-    <title>Fundation</title>
+    <title>Fundacje</title>
 </head>
 
 <%@ include file="../headerLog.jsp" %>

@@ -10,7 +10,7 @@ public class UserSecurity {
         this.userService = userService;
     }
 
-    public boolean isEnabled(Authentication authentication) {
-        return userService.findByUserEmail(authentication.getName()).isEnabled();
-    }
+//    public boolean isEnabled(Authentication authentication) {
+//        return userService.findByUserEmail(authentication.getName()).isEnabled();
+//    }
 }

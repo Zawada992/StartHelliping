@@ -27,17 +27,17 @@
                         <form:form method="post" action="/app/user/profile/change-pass">
 
                             <div class="form-group">
-                                <input id="oldPassword" type="text" name="oldPassword"
+                                <input id="oldPassword" type="password" name="oldPassword"
                                        placeholder="Stare hasło" class="form-control ">
                             </div>
 
                             <div class="form-group">
-                                <input id="newPassword" type="text" name="newPassword"
+                                <input id="newPassword" type="password" name="newPassword"
                                        placeholder="Nowe hasło" class="form-control ">
                             </div>
 
                             <div class="form-group">
-                                <input id="confirmPassword" type="text" name="confirmPassword"
+                                <input id="confirmPassword" type="password" name="confirmPassword"
                                        placeholder="Powtórz hasło" class="form-control ">
                             </div>
 

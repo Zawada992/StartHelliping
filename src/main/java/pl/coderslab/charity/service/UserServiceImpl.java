@@ -8,6 +8,7 @@ import pl.coderslab.charity.email.EmailService;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.RoleType;
 import pl.coderslab.charity.model.Users;
+import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 import pl.coderslab.charity.token.ConfirmationToken;
 import pl.coderslab.charity.token.ConfirmationTokenService;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final  RoleService roleService;
+    private final RoleRepository roleRepository;
     private final EmailService emailService;
     private final ConfirmationTokenService confirmationTokenService;
     private static final String LOCAL_LINK = "http://localhost:8080";
@@ -29,12 +31,13 @@ public class UserServiceImpl implements UserService {
 
 
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,
-                           RoleService roleService, EmailService emailService,
+                           RoleService roleService, RoleRepository roleRepository, EmailService emailService,
                            ConfirmationTokenService confirmationTokenService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
 
         this.roleService = roleService;
+        this.roleRepository = roleRepository;
         this.emailService = emailService;
         this.confirmationTokenService = confirmationTokenService;
     }
@@ -47,7 +50,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(Users user) {
-        user.setEnabled(false);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
         roles.add(roleService.findByRoleType(RoleType.ROLE_USER));
@@ -123,6 +125,22 @@ public class UserServiceImpl implements UserService {
                 )
         );
     }
+
+    @Override
+    public void changeStatus(Long id) {
+        Role roleUser = roleService.findByRoleType(RoleType.ROLE_USER);
+        Users user = userRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        Set<Role>roles = user.getRoles();
+        if(user.getRoles().contains(roleUser)){
+            roles.remove(roleUser);
+        }
+        else {
+            roles.add(roleUser);
+        }
+        user.setRoles(roles);
+        userRepository.save(user);
+    }
+
 
     private String buildEmailVerify(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +

@@ -95,7 +95,7 @@ public class DonationController {
     @GetMapping("/app/{id}/donations/mark-as-taken/{donationId}")
     public String userDonationsGet(@PathVariable Long id,@PathVariable Long donationId) {
         donationService.switchTaken(donationId);
-        return "redirect:/app/donations"+id;
+        return "redirect:/app/donations/"+id;
     }
 
 

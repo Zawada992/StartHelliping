@@ -29,13 +29,13 @@ public class Donation {
     private LocalTime pickedUpTime;
     private boolean taken;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Users user;
 
-    @ManyToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "donation_category")
     private List<Category> categories;
 
-    @OneToOne (cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Institution institution;
 }
