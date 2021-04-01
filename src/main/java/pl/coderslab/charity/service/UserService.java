@@ -18,6 +18,7 @@ public interface UserService {
     void saveUserPassword(Users user);
     List<Users> findAllByRoleType(RoleType roleType);
     void forgotPassword(Users user);
+    void changeStatus(Long id);
 
 
 }

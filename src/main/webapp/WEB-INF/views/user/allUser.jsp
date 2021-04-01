@@ -23,7 +23,6 @@
             <th>Imię i Nazwisko</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Odblokowany</th>
             <th>Akcja</th>
         </tr>
         </thead>
@@ -43,16 +42,11 @@
                         </c:if>
                     </c:forEach>
                 </td>
-                <td class="custom-td">${user.enabled}</td>
                 <td class="custom-td">
                     <a href="/admin/user/edit/${user.id}" class="btn btn--without-border">Edytuj</a>
                     <a href="/admin/user/delete/${user.id}" class="btn btn--without-border">Usuń</a>
-                    <c:if test="${user.enabled}">
-                        <a href="/admin/user/switch-enable/${user.id}" class="btn btn--without-border">Zablokuj</a>
-                    </c:if>
-                    <c:if test="${!user.enabled}">
-                        <a href="/admin/user/switch-enable/${user.id}" class="btn btn--without-border">Odblokuj</a>
-                    </c:if>
+                        <a href="/admin/user/switch-enable/${user.id}" class="btn btn--without-border">Zablokuj/Odblokuj</a>
+
                 </td>
             </tr>
         </c:forEach>

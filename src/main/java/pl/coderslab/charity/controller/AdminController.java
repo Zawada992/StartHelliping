@@ -30,10 +30,10 @@ public class AdminController {
     public String showAllAdmin(Model model) {
         model.addAttribute("admins", userService.findAllByRoleType(RoleType.ROLE_ADMIN));
         model.addAttribute("roles", roleService.findAll());
-        List<Boolean> bools = new ArrayList<>();
-        bools.add(true);
-        bools.add(false);
-        model.addAttribute("enables", bools);
+//        List<Boolean> bools = new ArrayList<>();
+//        bools.add(true);
+//        bools.add(false);
+//        model.addAttribute("enables", bools);
         return "admins/adminsAll";
     }
 
@@ -67,10 +67,10 @@ public class AdminController {
     public String editUser (Model model, @PathVariable Long id){
         model.addAttribute("user", userService.get(id));
         model.addAttribute("roles", roleService.findAll());
-        List<Boolean> bools = new ArrayList<>();
-        bools.add(true);
-        bools.add(false);
-        model.addAttribute("enables", bools);
+//        List<Boolean> bools = new ArrayList<>();
+//        bools.add(true);
+//        bools.add(false);
+//        model.addAttribute("enables", bools);
         return "user/editUserAdmin";
     }
 
@@ -92,9 +92,7 @@ public class AdminController {
 
     @GetMapping("/user/switch-enable/{id}")
     public String switchEnable(@PathVariable Long id){
-        Users user = userService.get(id);
-        user.setEnabled(!user.isEnabled());
-        userService.add(user);
+        userService.changeStatus(id);;
         return "redirect:/admin/user/all";
     }
 

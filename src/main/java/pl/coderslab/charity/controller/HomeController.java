@@ -75,7 +75,6 @@ public class HomeController {
     public String registerConfirmGet(@RequestParam String token) {
         ConfirmationToken confirmationToken = confirmationTokenService.findByToken(token);
         Users user = confirmationToken.getUser();
-        user.setEnabled(true);
         userService.add(user);
         confirmationTokenService.delete(confirmationToken);
         return "info/activation";

@@ -64,9 +64,7 @@
                     <form:errors path="password"/>
                 </div>
             </div>
-            <div id="error" class="form-group" style="color: red;">
-                <h3>${message}</h3>
-            </div>
+
         </div>
         <div class="form-group form-group--buttons">
             <a href="/login" class="btn btn--without-border">${logs}</a>
