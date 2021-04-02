@@ -11,8 +11,7 @@ The aim of the project is to create a place where everyone can donate unnecessar
   - Spring Data JPA
   - Spring Security
 ## Database:
-  - MySQL
-  - PostgreSQL in heroku
+  - PostgreSQL
 
 ## There are two ways to start a project:
 1. You can follow the link to the project on heroku: https://start-hellping.herokuapp.com/
